@@ -31,15 +31,3 @@ $img_inx = 1;
             src="<?= /* @noEscape */ $prodimage['large_image_url']; ?>" />
     <?php endforeach; ?>
 </div>
-
-<script>
-    require(['jquery', 'slick', 'jquery/ui'], function($, slick){
-        if (window.matchMedia("(max-width: 769px)").matches) {
-            $("#custom-gallery-images").slick({
-                dots: true,
-                arrows: false,
-                autoplay: false
-            });
-        }
-    });
-</script>

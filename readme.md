@@ -7,12 +7,11 @@ This repository contains a custom theme for Magento, based on the Luma parent th
 To set up the Magento Vue Storefront, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Copy the contents of the `magento-vue-storefront` directory to your Magento installation's `app/design/frontend` directory.
-3. Clear the Magento cache.
-4. Log in to the Magento admin panel and navigate to **Content > Design > Configuration**.
-5. Select your store view and click on **Edit**.
-6. Under **Themes**, select the newly added theme and save the configuration.
-7. Clear the Magento cache again.
+2. Clear the Magento cache.
+3. Log in to the Magento admin panel and navigate to **Content > Design > Configuration**.
+4. Select your store view and click on **Edit**.
+5. Under **Themes**, select the newly added theme and save the configuration.
+6. Clear the Magento cache again.
 
 ## Changes Made
 

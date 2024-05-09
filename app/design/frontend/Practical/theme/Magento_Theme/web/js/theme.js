@@ -6,10 +6,11 @@
 define([
     'jquery',
     'mage/smart-keyboard-handler',
+    'slick',
     'mage/mage',
     'mage/ie-class-fixer',
     'domReady!'
-], function ($, keyboardHandler) {
+], function ($, keyboardHandler, slick) {
     'use strict';
 
     $('.cart-summary').mage('sticky', {
@@ -26,4 +27,12 @@ define([
     });
 
     keyboardHandler.apply();
+
+    if (window.matchMedia("(max-width: 769px)").matches) {
+        $("#custom-gallery-images").slick({
+            dots: true,
+            arrows: false,
+            autoplay: false
+        });
+    }
 });
