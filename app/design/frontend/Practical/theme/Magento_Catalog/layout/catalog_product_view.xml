@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breadcrumbs" remove="true"/>
+        <referenceBlock name="product.info.review" remove="true"/>
+        <referenceBlock name="product.info.configurable" remove="true"/>
+        <referenceBlock name="product.info.sku" remove="true"/>
+        <referenceBlock name="product.attributes" remove="true" />
+        <move element="product.info.details" destination="product.main.container" before="-"/>
+        <move element="product.info.overview" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.media" destination="product.main.container" before="product.info.main"/>
+        <move element="product.info.main" destination="product.main.container" after="-"/>
+        <move element="view.addto.wishlist" destination="product.info.media" before="-"/>
+
+        <referenceContainer name='content'>
+            <container name="product.main.container" htmlTag="div" htmlClass="product-main-container" before="-">
+            </container>
+            <container name="product.bottom.container" htmlTag="div" htmlClass="product-bottom-container" after="product.main.container">
+                <block class="Magento\Cms\Block\Block" name="product_bottom">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">product_bottom</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name='product.info.details'>
+            <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes.delivery" as="delivery" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Delivery</argument>
+                        <argument name="sort_order" xsi:type="string">30</argument>
+                    </arguments>
+                </block>
+
+                <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes.fit" as="fit" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Fit</argument>
+                        <argument name="sort_order" xsi:type="string">40</argument>
+                    </arguments>
+                </block>
+
+                <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes.share" as="share" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Share</argument>
+                        <argument name="sort_order" xsi:type="string">50</argument>
+                    </arguments>
+                </block>
+        </referenceContainer>
+    </body>
+</page>

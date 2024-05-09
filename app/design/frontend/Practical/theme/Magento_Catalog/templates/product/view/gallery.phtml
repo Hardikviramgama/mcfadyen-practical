@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+
+<?php
+$images = $block->getGalleryImages()->getItems();
+$mainImage = current(array_filter($images, function ($img) use ($block) {
+    return $block->isMainImage($img);
+}));
+
+if (!empty($images) && empty($mainImage)) {
+    $mainImage = $block->getGalleryImages()->getFirstItem();
+}
+$helper = $block->getData('imageHelper');
+$mainImageData = $mainImage ? $mainImage->getData('medium_image_url') : $helper->getDefaultPlaceholderUrl('image');
+$img_inx = 1;
+?>
+
+<div class="custom-gallery-images" id="custom-gallery-images" data-gallery-role="custom-gallery-images">
+    <?php foreach ($images as $prodimage): ?>
+        <img alt="main product photo" class="pimages" index="<?= $img_inx++ ?>"
+            src="<?= /* @noEscape */ $prodimage['large_image_url']; ?>" />
+    <?php endforeach; ?>
+</div>
+
+<script>
+    require(['jquery', 'slick', 'jquery/ui'], function($, slick){
+        if (window.matchMedia("(max-width: 769px)").matches) {
+            $("#custom-gallery-images").slick({
+                dots: true,
+                arrows: false,
+                autoplay: false
+            });
+        }
+    });
+</script>
